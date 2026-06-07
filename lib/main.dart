@@ -18,18 +18,11 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'SMS GPT App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('SMS GPT App'),
-        ),
-        body: const Center(
-          child: Text('Welcome to SMS GPT App!'),
-        ),
+        appBar: AppBar(title: const Text('SMS GPT App')),
+        body: const Center(child: Text('Welcome to SMS GPT App!')),
       ),
     );
   }
 }
-
