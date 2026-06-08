@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:sms_gpt_app/core/di/injection_container.dart' as di;
+import 'package:sms_gpt_app/features/students/presentation/bloc/student_bloc.dart';
+import 'package:sms_gpt_app/features/students/presentation/bloc/student_event.dart';
 import 'package:sms_gpt_app/features/students/presentation/pages/login_page.dart';
 import 'package:sms_gpt_app/features/students/presentation/pages/sign_up.dart';
 import 'package:sms_gpt_app/features/students/presentation/pages/students_pages.dart';
@@ -56,7 +59,10 @@ class App extends StatelessWidget {
       routes: {
         '/signup': (context) => const SignUpPage(),
         '/login': (context) => const LoginPage(),
-        '/students': (context) => const StudentsPage(),
+        '/students': (context) => BlocProvider(
+          create: (_) => di.s1<StudentBloc>()..add(LoadStudents()),
+          child: const StudentsPage(),
+        ),
       },
     );
   }
